@@ -4,7 +4,7 @@
 
 void convert(uint32_t& ref, unsigned char* data)
 {
-    ref = static_cast<uint32_t>(data[0] << 12) | static_cast<uint32_t>(data[1] << 8) |  static_cast<uint32_t>(data[2] << 4) | static_cast<uint32_t>(data[3]);
+    ref = static_cast<uint32_t>(data[0] << 24) | static_cast<uint32_t>(data[1] << 16) |  static_cast<uint32_t>(data[2] << 8) | static_cast<uint32_t>(data[3]);
 }
 
 int main()
@@ -19,8 +19,7 @@ int main()
     convert(ref, data);
     std::cout << std::dec << ref << std::endl;
     
-    std::cout << std::bitset<sizeof(ref) * 4>(ref) << std::endl;
-    //std::cout << "Hello World!\n";
+    std::cout << std::bitset<sizeof(ref) * 8>(ref) << std::endl;
     delete[] data;
 }
 
